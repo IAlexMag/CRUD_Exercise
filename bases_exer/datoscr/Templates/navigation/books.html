@@ -32,7 +32,7 @@
                             <th scope="col">{{ Libro.editorial }}</th>
                             <th scope="col">{{ Libro.año }}</th>
                             <th scope="col">
-                                <div class="d-grid gap-2 d-md-block">
+                                <div class="container-fluid">
                                     <a class="btn btn-primary btn-warning" href="{% url 'edit' Libro.id %}" role="button" aria-disabled="true">Editar</a> |
                                     <a class="btn btn-primary btn-danger" href="{% url 'eliminar' Libro.id %}" role="button" aria-disabled="true">Borrar</a>
                                   </div> </th>
