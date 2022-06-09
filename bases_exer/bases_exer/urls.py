@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from datoscr import views
+from django.conf import settings
+from django.contrib.staticfiles.urls import static
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
@@ -25,4 +27,6 @@ urlpatterns = [
     path('create/', views.create, name='create'),
     path('edit/', views.edit, name='edit'),
     path('formulario/', views.formulario, name='formulario'),
-]
+    path('eliminar/<int:id>', views.eliminar, name='eliminar'),
+    path('edit/<int:id>', views.edit, name='edit')
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

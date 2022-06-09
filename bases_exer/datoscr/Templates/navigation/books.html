@@ -7,7 +7,7 @@
                 <h1 class="display-3 text-center">Listado de libros</h1>
             </div>
             <div class="card-body">
-                <a class="btn btn-primary btn-warning" href="{% url 'create' %}" role="button">Agregar libros</a>
+                <a class="btn btn-succes btn-info" href="{% url 'create' %}" role="button">Agregar libros</a>
                 <table class="table table-succes table-striped">
                     <thead>
                         <tr>
@@ -21,19 +21,23 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% for Libro in Libros %}
                         <tr>
-                            <th>1</th>
-                            <th>imagen.jpg</th>
-                            <th scope="col">Batallas en el desierto</th>
-                            <th scope="col">Jose Emilio Pacheco</th>
-                            <th scope="col">Larousse</th>
-                            <th scope="col">1987</th>
+                            <th>{{ Libro.id }}</th>
+                            <th>
+                                <img src="{{ Libro.imagen.url }}" height="100">
+                            </th>
+                            <th scope="col">{{ Libro.titulo }}</th>
+                            <th scope="col">{{ Libro.autor }}</th>
+                            <th scope="col">{{ Libro.editorial }}</th>
+                            <th scope="col">{{ Libro.año }}</th>
                             <th scope="col">
                                 <div class="d-grid gap-2 d-md-block">
-                                    <a class="btn btn-primary btn-warning" href="{% url 'edit' %}" role="button" aria-disabled="true">Editar</a>
-                                    <a class="btn btn-primary btn-danger" role="button" aria-disabled="true">Borrar</a>
+                                    <a class="btn btn-primary btn-warning" href="{% url 'edit' Libro.id %}" role="button" aria-disabled="true">Editar</a> |
+                                    <a class="btn btn-primary btn-danger" href="{% url 'eliminar' Libro.id %}" role="button" aria-disabled="true">Borrar</a>
                                   </div> </th>
                         </tr>
+                        {% endfor %}
                     </tbody>
                    
             </div>
